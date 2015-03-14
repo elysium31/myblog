@@ -15,6 +15,11 @@ def index():
             'id': 1,
             'title': "Title 2",
             'body': 'The Avengers movie was so cool!'
+        },
+        {
+            'id': 2,
+            'title': "Title 3",
+            'body': "Somethig interesting"
         }
         ]
     return render_template("index.html", posts=posts)
