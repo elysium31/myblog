@@ -19,10 +19,16 @@ def index():
         {
             'id': 2,
             'title': "Title 3",
-            'body': "Somethig interesting"
+            'body': "Something interesting"
         }
         ]
     return render_template("index.html", posts=posts)
+
+
+@app.route('/createpost', methods=['GET', 'POST'])
+def create_post():
+    return render_template("new_post.html")
+
 
 @app.route("/post/<int:post_id>")
 def post(post_id):

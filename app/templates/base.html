@@ -1,6 +1,7 @@
 <html>
 	<head>
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" media="screen">
 	{% if title %}
 	<title>{{title}} - microblog</title>
 	{% else %}
@@ -9,8 +10,10 @@
 	</head>
 	<body>
 		<div>Myblog:
-			<a href="{{ url_for('index') }}">Home</a>
+			<a href="{{ url_for('index') }}">Home</a>&nbsp;<a href="{{ url_for('create_post') }}">New Post</a>
+        </div>
 		<div>
 		{% block content %}{% endblock %}
+        </div>
 	</body>
 </html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h1>Create new post</h1>
+    <div class="form-group {% if error and error_type == 'validate' %} has-error{% endif %}">
+							{%- if error and error_type == 'validate' -%}
+								<label class="control-label" for="post-full">Required field</label>
+							{%- endif -%}
+						    <textarea id="post-full" name="post-full" class="form-control" rows="6" placeholder="Full Text" required>{{ post_body | safe }}</textarea>
+    </div>
+</div>
+{% endblock %}
