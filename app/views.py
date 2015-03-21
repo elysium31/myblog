@@ -1,6 +1,7 @@
-from flask import render_template, g
+from flask import render_template, redirect, url_for, g
 from app import app, db, models
-
+from forms import PostForm
+import datetime
 
 @app.route('/')
 @app.route('/index')
@@ -28,7 +29,16 @@ def index():
 
 @app.route('/createpost', methods=['GET', 'POST'])
 def create_post():
-    return render_template("new_post.html")
+    form = PostForm()
+    if form.validate_on_submit():
+        u = models.User.query.get(1)
+        post_ = models.Post(title=form.title.data, body=form.body.data,
+                            timestamp=datetime.datetime.utcnow(), author=u)
+        db.session.add(post_)
+        db.session.commit()
+        # flash('Your post is now live!')
+        return redirect(url_for('index'))
+    return render_template("new_post.html", form=form)
 
 
 @app.route("/post/<int:post_id>")

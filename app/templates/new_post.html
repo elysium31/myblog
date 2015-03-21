@@ -2,11 +2,32 @@
 {% block content %}
 <div>
     <h1>Create new post</h1>
-    <div class="form-group {% if error and error_type == 'validate' %} has-error{% endif %}">
-							{%- if error and error_type == 'validate' -%}
-								<label class="control-label" for="post-full">Required field</label>
-							{%- endif -%}
-						    <textarea id="post-full" name="post-full" class="form-control" rows="6" placeholder="Full Text" required>{{ post_body | safe }}</textarea>
-    </div>
-</div>
+    <form action="" method="post" name="post">
+        {{form.hidden_tag()}}
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td>{{ form.title(size = 30, maxlength = 128) }}</td>
+                <td>
+                {% for error in form.errors.post %}
+                <span style="color: red;">[{{error}}]</span><br>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>Body:</td>
+                <td>{{ form.body(size = 30, maxlength = 256) }}</td>
+                <td>
+                {% for error in form.errors.post %}
+                <span style="color: red;">[{{error}}]</span><br>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Post!"></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
 {% endblock %}
