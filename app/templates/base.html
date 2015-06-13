@@ -1,7 +1,13 @@
 <html>
 	<head>
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/mdmagick.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style_.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js')}}" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/a-tools.js')}}" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/showdown.js')}}" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/mdmagick.js')}}" charset="utf-8"></script>
 	{% if title %}
 	<title>{{title}} - microblog</title>
 	{% else %}
@@ -9,11 +15,17 @@
 	{% endif %}
 	</head>
 	<body>
-		<div>Myblog:
-			<a href="{{ url_for('index') }}">Home</a>&nbsp;<a href="{{ url_for('create_post') }}">New Post</a>
+		<div class="nav">
+            <div class="container">
+                <ul class="pull-left">
+			        <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('create_post') }}">New Post</a></li>
+                </ul>
+                <ul class="pull-right">
+			        <li><a href="#">Login</a></li>
+                </ul>
+            </div>
         </div>
-		<div>
 		{% block content %}{% endblock %}
-        </div>
 	</body>
 </html>
