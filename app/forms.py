@@ -1,14 +1,14 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, BooleanField
-from wtforms.validators import Required
+from wtforms import StringField, BooleanField
+from wtforms.validators import DataRequired
 
 class LoginForm(Form):
-    openid = TextField('openid', validators=[Required()])
+    openid = StringField('openid', validators=[DataRequired()])
     remember_me = BooleanField('remember_me', default=False)
 
 
 class PostForm(Form):
-    title = TextField('title', validators=[Required()])
-    body = TextField('body', validators=[Required()])
+    title = StringField('title', validators=[DataRequired()])
+    body = StringField('body', validators=[DataRequired()])
 
 
