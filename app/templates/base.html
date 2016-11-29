@@ -18,15 +18,15 @@
 		<div class="nav">
             <div class="container">
                 <ul class="pull-left">
-			        <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('create_post') }}">New Post</a></li>
+			        <li><a href="{{ url_for('site.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('post.create_post') }}">New Post</a></li>
                 </ul>
                 <ul class="pull-right">
                     {% if current_user.is_authenticated() %}
-                        <a href="{{ url_for('user.logout') }}">Logout</a>
+                        <a href="{{ url_for('auth.logout') }}">Logout</a>
                     {% else %}
-                        <a href="{{ url_for('user.register') }}">Register</a>
-                        <a href="{{ url_for('user.login') }}">Login</a>
+                        <a href="{{ url_for('auth.register') }}">Register</a>
+                        <a href="{{ url_for('auth.login') }}">Login</a>
                     {% endif %}
                 </ul>
             </div>

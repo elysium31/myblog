@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+<form method=post action="{{ url_for('auth.register') }}">
+    {{ form.nickname.label }} {{ form.nickname() }}
+    {{ form.password.label }} {{ form.password() }}
+    <input type=submit value=Register>
+</form>

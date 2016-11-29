@@ -1,7 +1,8 @@
-from flask.ext.wtf import Form
-from flask_user.forms import RegisterForm
+from flask_wtf import Form
+
 from wtforms import StringField, BooleanField, SubmitField, validators
 # from wtforms.validators import DataRequired
+
 
 class LoginForm(Form):
     openid = StringField('openid', validators=[validators.DataRequired()])
@@ -13,11 +14,19 @@ class PostForm(Form):
     body = StringField('body', validators=[validators.DataRequired()])
 
 
-class MyRegisterForm(RegisterForm):
-    first_name = StringField('First name', validators=[
-        validators.DataRequired('First name is required')])
-    last_name = StringField('Last name', validators=[
-        validators.DataRequired('Last name is required')])
+class RegisterForm(Form):
+    nickname = StringField(
+        label='First name',
+        validators=[
+            validators.DataRequired('Nick name is required')
+        ]
+    )
+    password = StringField(
+        label='Last name',
+        validators=[
+            validators.DataRequired('Password is required')
+        ]
+    )
 
 
 

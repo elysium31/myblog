@@ -1,18 +1,22 @@
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+DEBUG = True
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+PG_DB_KWARGS = dict(
+   user_name="postgres",
+   password="postgres",
+   db_name="posts",
+)
+SQLALCHEMY_DATABASE_URI = (
+   "postgresql://{user_name}:{password}@localhost:5432/{db_name}".format(**PG_DB_KWARGS)
+)
 
 CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 
 # Flask-Mail settings
-MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
-MAIL_SERVER = os.environ.get('MAIL_SERVER')
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+MAIL_SERVER = 'localhost'
 MAIL_PORT = 465
 MAIL_USE_SSL = True
 MAIL_USE_TLS = False
