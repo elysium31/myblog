@@ -1,0 +1,10 @@
+{% macro form_render(form) %}
+    {{ form.start(validate=validate, **kwargs) }}
+
+    {% if form._method == 'post' %}
+        {{ form.csrf_token | safe }}
+    {% endif %}
+
+    {{ caller() }}
+    {{ form.end() }}
+{% endmacro %}

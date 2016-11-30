@@ -15,6 +15,28 @@
 	{% endif %}
 	</head>
 	<body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">MyBlog</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ url_for('site.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('post.create_post') }}">New Post</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_authenticated() %}
+                        <li><a href="#">Log out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+
+    {#
 		<div class="nav">
             <div class="container">
                 <ul class="pull-left">
@@ -31,8 +53,11 @@
                 </ul>
             </div>
         </div>
-        <div class="col-centered">
-		    {% block content %}{% endblock %}
+    #}
+        <div class="container">
+            <div class="col-centered">
+		        {% block content %}{% endblock %}
+            </div>
         </div>
 	</body>
 </html>

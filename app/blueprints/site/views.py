@@ -1,6 +1,7 @@
 from flask import render_template, render_template_string
-from app.models import Post
+
 from app.blueprints import site_bp
+from app.models.post import Post
 
 
 @site_bp.route('/')

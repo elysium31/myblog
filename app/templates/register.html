@@ -1,6 +1,15 @@
 {% extends "base.html" %}
-<form method=post action="{{ url_for('auth.register') }}">
-    {{ form.nickname.label }} {{ form.nickname() }}
-    {{ form.password.label }} {{ form.password() }}
-    <input type=submit value=Register>
-</form>
+{% import "macro.html" as m_macros %}
+
+{% block content %}
+        {% call m_macros.form_render(form=form, method='post', action=url_for('auth.register')) %}
+            <div class="form-group">
+                {{ form.username.label }} {{ form.username(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }} {{ form.password(class_="form-control") }}
+            </div>
+                {{ form.submit(class_="btn btn-default") }}
+        {% endcall %}
+    </div>
+{% endblock %}
