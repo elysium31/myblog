@@ -11,7 +11,7 @@ SQLALCHEMY_DATABASE_URI = (
 
 CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
-
+WTF_CSRF_ENABLED = True
 
 # Flask-Mail settings
 MAIL_USERNAME = None

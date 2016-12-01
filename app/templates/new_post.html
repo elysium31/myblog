@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    <h1>Create new post</h1>
-    <form action="{{ url_for('create_post') }}" method="post" name="post">
-        <section>
-            <h3>Post title:</h3>
-            <textarea id="post-title" name="title" class="mdm-input" rows="3" placeholder="Short Text"></textarea>
-        </section>
-        <section>
-            <h3>Post body:</h3>
-            <textarea id="post-body" name="body" class="big mdm-input" rows="6"></textarea>
-        </section>
-        <div>
-            <input id="post-submit" type="submit" value="Submit">
-        </div>
-    </form>
-</div>
+    <div>
+        <h1>Create new post</h1>
+        <form action="{{ url_for('post.create_post') }}" method="post" name="post">
+            <section>
+                <h3>Post title:</h3>
+                <textarea id="post-title" name="title" class="mdm-input" rows="3" placeholder="Short Text"></textarea>
+            </section>
+            <section>
+                <h3>Post body:</h3>
+                <textarea id="post-body" name="body" class="big mdm-input" rows="6"></textarea>
+            </section>
+            <div>
+                <input id="post-submit" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 {% endblock %}

@@ -1,7 +1,5 @@
-# from flask.ext.login import LoginManager
 from flask import Flask
 from flask_script import Manager
-# from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 
 flask_app = Flask(__name__)
@@ -14,6 +12,13 @@ from flask_login import LoginManager
 login_manager = LoginManager()
 login_manager.init_app(flask_app)
 
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt()
+bcrypt.init_app(flask_app)
+
+from flask_wtf.csrf import CsrfProtect
+csrf_protect = CsrfProtect()
+csrf_protect.init_app(flask_app)
 
 from app.services.database import db
 db.app = flask_app

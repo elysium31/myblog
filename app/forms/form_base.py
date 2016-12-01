@@ -1,12 +1,11 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from markupsafe import Markup
 
 
-class FormBase(Form):
-
+class FormBase(FlaskForm):
     def __init__(self, formdata=None, obj=None, method='post', **kwargs):
-        self._method = method
-        Form.__init__(self, formdata, obj=obj, **kwargs)
+        self._method = method.lower()
+        FlaskForm.__init__(self, formdata, obj=obj, **kwargs)
 
     def start(self, **kwargs):
         attributes = " ".join(
@@ -14,7 +13,7 @@ class FormBase(Form):
         )
 
         return Markup(
-            '<form name="{name}" method="{method}" {attributes}'
+            '<form name="{name}" method="{method}" {attributes}>'
         ).format(
             name=self.get_name(),
             method=self._method.lower(),

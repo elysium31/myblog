@@ -29,10 +29,3 @@ def create_post():
 def post(post_id):
     post = Post.query.get(post_id)
     return render_template("post.html", title=post.title, text=post.body)
-
-
-@post_bp.route("/test_post")
-def test_post():
-    return render_template_string('test post')
-
-

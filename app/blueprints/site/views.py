@@ -9,8 +9,3 @@ from app.models.post import Post
 def index():
     posts = Post.query.all()
     return render_template("index.html", posts=posts)
-
-
-@site_bp.route('/test')
-def test_view():
-    return render_template_string('test')
