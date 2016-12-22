@@ -1,18 +1,12 @@
 <html>
 	<head>
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/mdmagick.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style_.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js')}}" charset="utf-8"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/a-tools.js')}}" charset="utf-8"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/showdown.js')}}" charset="utf-8"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/mdmagick.js')}}" charset="utf-8"></script>
-	{% if title %}
-	<title>{{title}} - microblog</title>
-	{% else %}
-	<title>microblog</title>
-	{% endif %}
+        <script type="text/javascript" src="{{ url_for('static', filename='build/bundle.js')}}" charset="utf-8"></script>
+
+        {% if title %}
+        <title>{{title}} - microblog</title>
+        {% else %}
+        <title>microblog</title>
+        {% endif %}
 	</head>
 	<body>
         <nav class="navbar navbar-default">
@@ -26,7 +20,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated() %}
-                        <li><a href="#">Log out</a></li>
+                        <li><a href="{{ url_for('auth.logout')}}">Log out</a></li>
                     {% else %}
                         <li><a href="{{ url_for('auth.register') }}">Register</a></li>
                         <li><a href="{{ url_for('auth.login') }}">Login</a></li>
@@ -35,25 +29,6 @@
             </div>
         </nav>
 
-
-    {#
-		<div class="nav">
-            <div class="container">
-                <ul class="pull-left">
-			        <li><a href="{{ url_for('site.index') }}">Home</a></li>
-                    <li><a href="{{ url_for('post.create_post') }}">New Post</a></li>
-                </ul>
-                <ul class="pull-right">
-                    {% if current_user.is_authenticated() %}
-                        <a href="{{ url_for('auth.logout') }}">Logout</a>
-                    {% else %}
-                        <a href="{{ url_for('auth.register') }}">Register</a>
-                        <a href="{{ url_for('auth.login') }}">Login</a>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    #}
         <div class="container">
             <div class="col-centered">
 		        {% block content %}{% endblock %}

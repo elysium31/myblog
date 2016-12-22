@@ -3,7 +3,8 @@ from app.forms.form_base import FormBase
 from wtforms import (
     StringField,
     SubmitField,
-    PasswordField
+    PasswordField,
+    TextAreaField,
 )
 from wtforms.validators import DataRequired
 
@@ -42,4 +43,10 @@ class RegisterForm(FormBase):
             DataRequired('Password is required')
         ]
     )
+    submit = SubmitField("Submit")
+
+
+class NewPostForm(FormBase):
+    title = StringField(label="Title", validators=[DataRequired()])
+    body = TextAreaField(label="Body", validators=[DataRequired()])
     submit = SubmitField("Submit")

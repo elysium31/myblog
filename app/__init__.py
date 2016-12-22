@@ -24,7 +24,13 @@ from app.services.database import db
 db.app = flask_app
 db.init_app(flask_app)
 
+
 from app.blueprints import post_bp, site_bp, auth_bp
 flask_app.register_blueprint(post_bp)
 flask_app.register_blueprint(site_bp)
 flask_app.register_blueprint(auth_bp)
+
+from app.lib.url import url_current
+flask_app.jinja_env.globals.update(
+    url_current=url_current
+)

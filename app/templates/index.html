@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for post in posts %}
+    {% for post in t_paginator.items %}
         <div class="post">
-            <h1><a href="{{ url_for('post', post_id=post.id) }}">{{post.title}}</a></h1>
-            <p>{{post.body}}</p>
+            <h2><a href="{{ url_for('post.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p>{{ post.date_created }}</p>
+            <p>{{ post.body }}</p>
+            <p>{{ post.user.username }}</p>
         </div>
     {% endfor %}
+    <ul class="pagination">
+        {% for page in t_paginator.iter_pages() %}
+            <li><a href="{{ url_current(page=page) }}">{{ page }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
